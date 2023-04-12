@@ -13,14 +13,14 @@ export default class Home extends React.Component {
         <Col md='1' />
         <Col md='4'>
           <Button color='primary' size='lg' block onClick={onClickCreate}>
-            <FontAwesomerIcon icon={faPlus} /> Create game
+            <FontAwesomerIcon icon={faPlus} /> Create Game
           </Button>
           <br />
         </Col>
         <Col md='2' />
         <Col md='4'>
           <Button color='secondary' size='lg' block onClick={onClickJoin}>
-            <FontAwesomerIcon icon={faSignInAlt} /> Join game
+            <FontAwesomerIcon icon={faSignInAlt} /> Join Game
           </Button>
           <br />
         </Col>
