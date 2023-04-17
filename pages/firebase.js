@@ -1,11 +1,18 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from 'firebase/auth';
-// TODO: Add SDKs for Firebase products that you want to use
+import { getDatabase } from 'firebase/database';
+import firebase from 'firebase/compat/app';
+import "firebase/compat/firestore";
+
+
+// import 'firebase/firestore'
+// import firebase from "firebase/app"
+ // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
+const firebaseConfig = { 
   apiKey: "AIzaSyCXWjaiWZjm94dfiDnvCtmvQRCDKJ7lzbY",
   authDomain: "cockroach-poker.firebaseapp.com",
   projectId: "cockroach-poker",
@@ -15,5 +22,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+export const app = firebase.initializeApp(firebaseConfig);
 export const auth = getAuth();
+// export const database= getDatabase();
+export const database= firebase.firestore();
