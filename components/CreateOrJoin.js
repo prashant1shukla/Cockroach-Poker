@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import useJSON from '../pages/useJSON';
 import { database } from '../pages/firebase';
 import { app } from '../pages/firebase'
+import Link from 'next/link';
 export default function CreateOrJoin({ Setstatus, database, SetRoom, user, setplayerkey }) {
     // console.log("database",database);
     const [createdata_col, setcreatedata_col] = useState("#fff");
@@ -19,7 +20,7 @@ export default function CreateOrJoin({ Setstatus, database, SetRoom, user, setpl
     // console.log(rooms);
 
     useEffect(() => {
-        setnop(2);
+        // setnop(2);
         setcreate_room(false);
         database.collection("RoomNames").onSnapshot((snap)=>{
             setrooms(snap.docs.map(doc=>(doc.data())));
@@ -107,47 +108,28 @@ export default function CreateOrJoin({ Setstatus, database, SetRoom, user, setpl
         // await firebase?.database().ref("RoomNames/"+room_create+"/data/cards/").set(JSON.stringify(_json));
         // await firebase?.database().ref("RoomNames/"+room_create+"/data/hidden/").set(JSON.stringify(_json.hide));
     }
-    function get7s(num) {
-        const grps = ["H", "S", "D", "C"]
-        const vals = [0, 2, 3, 4, 5, 6, 7, 8, 9, "K", "J", "Q", "A"]
-        var cards = []
-        for (var i = 0; i < grps.length; i++)
-            for (var j = 0; j < vals.length; j++)
-                cards.push(vals[j] + grps[i]);
-        for (i = 0; i < 100; i++) {
-            var p = Math.floor(Math.random() * 52);
-            var q = Math.floor(Math.random() * 52);
-            var card = cards[p];
-            cards[p] = cards[q];
-            cards[q] = card;
-        }
-        var json = {};
-        var _i = 0
-        for (_i = 0; _i < num; _i++) {
-            json["ini_" + _i] = cards.slice(7 * _i, 7 * (_i + 1));
-        }
-        json["hide"] = cards.slice(7 * _i, 52);
-        return json;
-    }
-    function Join(val) {
+
+    async function Join(val) {
         // await database.collection('RoomNames').doc(room_name).set(json)
         database.collection("RoomNames").doc(val).onSnapshot((shot)=>{
             let value = shot.data();
             value = value.data;
             console.log("The list is : ",value);
-            const cur_nop = value.currentnop;
-            const new_nop = Number(cur_nop + 1);
-            console.log(cur_nop + " / " + new_nop);
+            // const cur_nop = value.currentnop;
+            // const new_nop = Number(cur_nop + 1);
+            // console.log(cur_nop + " / " + new_nop);
             // database().collection("RoomNames/" + val + "/data/currentnop/").set(new_nop);
-            let temp_ = value;
-            temp_ = {...temp_,cur_nop:new_nop}
-            database.collection('RoomNames').doc(val).update({data:temp_});
+            // let temp_ = value;
+            // temp_ = {...temp_,cur_nop:new_nop}
+            // database.collection('RoomNames').doc(val).update({data:temp_});
             // var playerref = "client_" + cur_nop;
         // database().collection("RoomNames/" + val + "/players/" + playerref).set({
         //         name: user.displayName,
         //         img: user.photoURL,
         //         ready: false
         //     });
+
+        //Sameer trying starts
             var temp = shot.data();
             temp = temp.players;
             temp.push({
@@ -158,7 +140,9 @@ export default function CreateOrJoin({ Setstatus, database, SetRoom, user, setpl
             database.collection('RoomNames').doc(val).update({
                 players:temp
             })
-            setplayerkey("client_" + (new_nop - 1));
+            window.location.replace(`/Game/${val}`);
+        //Sameering trying ends
+            // setplayerkey("client_" + (new_nop - 1));
         // database().collection("RoomNames/" + val + "/players").set(new_nop + "/" + value.nop);
         //     if (new_nop === Number(value.nop)) {
         //         console.log("Start");
@@ -185,9 +169,48 @@ export default function CreateOrJoin({ Setstatus, database, SetRoom, user, setpl
         //     database().collection("RoomNames/" + val + "/status/").set("started");
         //     database().collection("RoomNames/" + val + "/data/status/").set("isallready");
         //     }
-        // })
+        // })// await SetRoom(_roomname);
+
+        //prashant trying:
+        // setroom_create(room_name)
+        // console.log(room_create)
+        const json = {
+            // data: {
+            //     nop: Number(nop),
+            //     currentnop: 2,
+            //     status: "queuing",
+            //     myturn: 0,
+            //     room_name:room_name
+            // },
+            players: [{
+                    name: user.displayName,
+                    img: user.photoURL,
+                    ready: false
+                
+        }]
+        }
+//         await database.collection('RoomNames').doc(val).collection('players').add({
+//             name: user.displayName,
+//             img: user.photoURL,
+//             ready: false
+        
+// });
+
+// await database.collection('RoomNames').doc(val).collection('players').onSnapshot(doc => {
+//     doc.docs.push(json);
+//     console.log("hi priyank");
+//     console.log(doc);
+//     // console.log(database.collection('RoomNames').doc(val).collection('players').get());
+//     // saveditems1.push(...json);
+    
+//    });
+
+        // await database.collection('RoomNames').doc(val).add(json);
+
+        //for linking to the new webpage:
         const _roomname = val;
-        // await SetRoom(_roomname);
+        // window.location.replace(`/Game/${val}`);
+        
     }
     function Toogle() {
         setcreatedata_text("* A-Z a-z 0-9 _");
@@ -210,12 +233,12 @@ export default function CreateOrJoin({ Setstatus, database, SetRoom, user, setpl
                 <div>
                     <h2>Available Game Rooms</h2>
                     <div className="rooms">
-                        {rooms?.map(room => {
+                        {rooms?.map((room,id) => {
                             console.log(room)
                             if (room?.data.status !== "queuing")
                                 return (<div ></div>);
                             return (
-                                <div className="room"  onClick={() => Join(room?.data.room_name)}>
+                                <div key={id} className="room"  onClick={() => Join(room?.data.room_name)}>
                                     <div className="roomname">{room?.data.room_name}</div>
                                     <div className="num">{room?.data.players}</div>
                                 </div>

@@ -3,14 +3,10 @@
 
 import React from 'react'
 import { useState , useEffect} from 'react';
-// import '../components/App.css';
+// import './styles/global.css'
 import Router from 'next/router'
 import Head from 'next/head'
-// import PageLayout from '../components/PageLayout.js'
-// import PageHeader from '../components/PageHeader.js'
-// import Home from '../components/Home.js'
-// import Create from '../components/Create.js'
-// import Join from '../components/Join.js'
+
 import CreateOrJoin from '../components/CreateOrJoin'
 import WaitandQueue from '../components/WaitandQueue'
 import Game from '../components/Game'
@@ -31,12 +27,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import {storage} from './firebase';
 import { ref } from 'firebase/database'
 import firebase from "firebase/app"
-
-// const storage = firebase.storage();
-
-// const auth = firebase.auth();
-// const database=firebase.database();
-
 
 function App() {
   const [user]=useAuthState(auth);
@@ -65,27 +55,7 @@ function Intro({user}){
     </div>
   );
 }
-// export default function Home1(){
-//   const [user,setuser]=useAuthState(auth); 
-//   const googleAuth=new GoogleAuthProvider();
-  // const login= async() =>{
-  //   const result= await signInWithPopup(auth, googleAuth);
-  // };
 
-//   useEffect(()=>{
-//     console.log(user);
-//   },[user]);
-
-//   return(
-//     <div>
-//       <h1> Login In Please </h1>
-//       <button onClick={login}>LOGIN</button>
-//       <div onClick={()=> auth.signOut()}>
-//       </div>
-//         {user? " Welcome, "+ user.displayName: ""}
-//       </div>    
-//   );
-// }
 function SignIn(){
   const SignInWithGoogle=()=>{
     const provider= new GoogleAuthProvider();
@@ -180,7 +150,7 @@ function Chat({room,user,_public}){
     if(!_public)
       path="Rooms/"+room+"/msgs";
     console.log(message);
-    database.ref(path).push({
+    database?.ref(path).push({
       uid : user.uid,
       msg : message,
       time : new Date().getTime(),
@@ -295,10 +265,10 @@ function GameView({user,back}){
   //     }
   //   }
   // },[data,status]);
-  function NewGame(){
-    setstatus("not entered");
-    setroom(" ");
-  }
+
+  
+  
+  //DELETING A ROOM FUNCTIONALITY WILL BE ADDED IN A WHILE
   function DeleteRoom(){
     database.ref("RoomNames/"+room).remove();
     database.ref("Rooms/"+room).remove();
@@ -347,9 +317,13 @@ export default App;
 
 
 
+// FOLLWING ARE THE COMMENTS WHICH HELPED ME TO LEARN AND USE AUTHENTICATION FEATURE USING FIREBASE.
+// import PageLayout from '../components/PageLayout.js'
+// import PageHeader from '../components/PageHeader.js'
+// import Home from '../components/Home.js'
+// import Create from '../components/Create.js'
+// import Join from '../components/Join.js'
 
-
-// //new end
 
 // export default function Home1(){
 //   const [user,setuser]=useAuthState(auth); 
@@ -375,7 +349,14 @@ export default App;
 
 
 
-// new 
+
+
+
+
+
+
+
+// FOLLWING ARE THE COMMENTS WHICH HELPED ME TO LEARN AND USE CREATE ROOM AND JOIN ROOM FEATURE.
 // export default class Index extends React.Component {
 //   constructor (props) {
 //     super(props)
@@ -469,17 +450,4 @@ export default App;
 //       </PageLayout>
 //     )
 //   }
-// }
-
-// import Head from 'next/head'
-// import test from './test';
-// //---third attempt--
-// export default function Home1 () {
-//   return (
-//     <div>
-//     <p>yo</p>
-      
-//       <test />
-//     </div>
-//   );
 // }

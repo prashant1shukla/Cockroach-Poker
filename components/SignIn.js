@@ -1,3 +1,7 @@
+//THIS PAGE IS USED FOR LEARNING THE AUTHENTHICATION USING FIREBASE.
+
+
+
 import React from "react";
 import {signInWithGoogle} from "../pages/firebase";
 

@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* @import 'bootstrap/scss/bootstrap.css'; */
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -114,7 +115,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url(../components/);
+  /* background-image: url(../components/); */
   background-color: #000000cf;
   background-blend-mode: color;
 }
@@ -218,7 +219,7 @@ input[type='radio']{
   background-size: cover;
   height: 90vh;
   overflow-y: scroll;
-  background-image: url(../components/);
+  /* background-image: url(../components/); */
   background-color: #000000af;
   background-blend-mode: color;
 }

@@ -1,3 +1,6 @@
+//THIS PAGE IS BEING USED FOR ADDING A SPINNER IF LOADING IS BEING REQUIRED.
+
+
 'use strict'
 
 import React from 'react'
