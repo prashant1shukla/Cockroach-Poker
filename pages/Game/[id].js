@@ -60,8 +60,8 @@ const Game = () => {
           <MDBCard className='my-5 bg-glass'>
             <MDBCardBody className='p-5'>
             <p className='px-3' style={{color: 'black'}}>
-          It was great learning new Technology like Next.js and Firebase.
-          </p>
+            It was great learning new Technology like Next.js and Firebase.
+            </p>
 
             </MDBCardBody>
           </MDBCard>
