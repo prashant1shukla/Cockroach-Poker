@@ -224,21 +224,21 @@ export default function CreateOrJoin({ Setstatus, database, SetRoom, user, setpl
         setnop(val);
     }
     return (
-        <div>
-            <div className="select">
-                <span className={join ? "a" : ""} onClick={Toogle}>CreateRoom</span>
-                <span className={join ? "" : "a"} onClick={Toogle}>JoinRoom</span>
+        <div >
+            <div className="select" >
+                <span className={join ? "a text-white" : ""} onClick={Toogle}>CreateRoom</span>
+                <span className={join ? "" : "a text-white"} onClick={Toogle}>JoinRoom</span>
             </div>
             {join ?
                 <div>
-                    <h2>Available Game Rooms</h2>
+                    <h2 style={{color:'text-cyan-400'}}>Available Game Rooms</h2>
                     <div className="rooms">
                         {rooms?.map((room,id) => {
                             console.log(room)
                             if (room?.data.status !== "queuing")
                                 return (<div ></div>);
                             return (
-                                <div key={id} className="room"  onClick={() => Join(room?.data.room_name)}>
+                                <div key={id} className="room text-white"  onClick={() => Join(room?.data.room_name)}>
                                     <div className="roomname">{room?.data.room_name}</div>
                                     <div className="num">{room?.data.players}</div>
                                 </div>
@@ -248,18 +248,18 @@ export default function CreateOrJoin({ Setstatus, database, SetRoom, user, setpl
                     </div>
                 </div>
                 :
-                <div className="create">
-                    <div className="qn">Enter RoomName</div>
-                    <input type="text" placeholder="Valid Roomname" onChange={(e) => { setroom_name(e.target.value) }} />
-                    <div className="error" style={{ color: createdata_col }}>{createdata_text}</div>
-                    <div className="qn">Select Number of Players</div>
-                    <div className="select" style={{ marginTop: "3vh" }}>
+                <div className="create" >
+                    <div className="qn text-white">Enter RoomName</div>
+                    <input type="text " placeholder="Valid Roomname " onChange={(e) => { setroom_name(e.target.value) }} />
+                    <div className="error text-white" style={{ color: createdata_col }}>{createdata_text}</div>
+                    <div className="qn text-white">Select Number of Players</div>
+                    <div className="select text-white" style={{ marginTop: "3vh" }}>
                         <input type="radio" name="COR" value="2" onClick={Change_nop} defaultChecked />2
                         <input type="radio" name="COR" value="3" onClick={Change_nop} />3
                         <input type="radio" name="COR" value="4" onClick={Change_nop} />4
                         <input type="radio" name="COR" value="5" onClick={Change_nop} />5
                     </div>
-                    <button className="create_btn" style={{ opacity: create_room ? 1 : 0.5, marginBottom: "50px" }} onClick={Create}>Create Room</button>
+                    <button className="create_btn text-white"  onClick={Create}>Create Room</button>
                 </div>
             }
         </div>

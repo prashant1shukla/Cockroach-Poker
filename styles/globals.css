@@ -2,7 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 /* @import 'bootstrap/scss/bootstrap.css'; */
+.gradient-custom-3 {
+  /* fallback for old browsers */
+  background: #84fab0;
 
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
+}
+
+.gradient-custom-4 {
+  /* fallback for old browsers */
+  background: #84fab0;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+}
+.MDBContainer {
+    display: flex;
+    align-items: center;
+}
+.background-radial-gradient {
+  background-color: hsl(218, 41%, 15%);
+  background-image: radial-gradient(650px circle at 0% 0%,
+      hsl(218, 41%, 35%) 15%,
+      hsl(218, 41%, 30%) 35%,
+      hsl(218, 41%, 20%) 75%,
+      hsl(218, 41%, 19%) 80%,
+      transparent 100%),
+    radial-gradient(1250px circle at 100% 100%,
+      hsl(218, 41%, 45%) 15%,
+      hsl(218, 41%, 30%) 35%,
+      hsl(218, 41%, 20%) 75%,
+      hsl(218, 41%, 19%) 80%,
+      transparent 100%);
+}
+
+#radius-shape-1 {
+  height: 220px;
+  width: 220px;
+  top: -60px;
+  left: -130px;
+  background: radial-gradient(#44006b, #ad1fff);
+  overflow: hidden;
+}
+
+#radius-shape-2 {
+  border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+  bottom: -60px;
+  right: -110px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(#44006b, #ad1fff);
+  overflow: hidden;
+}
+
+.bg-glass {
+  background-color: hsla(0, 0%, 100%, 0.9) !important;
+  backdrop-filter: saturate(200%) blur(25px);
+}
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -16,7 +79,13 @@
     --background-end-rgb: 0, 0, 0;
   }
 }
-
+.content_bg {
+  margin: 50px 0;
+  background-image: url('../public/backg.jpg');
+  /* height: 500px; */
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -115,7 +184,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  /* background-image: url(../components/); */
+  background-image: url(https://www.shutupandsitdown.com/wp-content/uploads/2015/07/4738d5261ffb11e59b9bf23c91709c91_1435759979.jpg);
   background-color: #000000cf;
   background-blend-mode: color;
 }
@@ -202,8 +271,30 @@ input[type='radio']{
   color: transparent;
 }
 .create_btn{
-  background: #0af;
+  /* background: #0af; */
   margin-top: 8vh;
+  
+  background: #5E5DF0;
+  border-radius: 999px;
+  box-shadow: #5E5DF0 0 5px 15px -8px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family: Inter,Helvetica,"Apple Color Emoji","Segoe UI Emoji",NotoColorEmoji,"Noto Color Emoji","Segoe UI Symbol","Android Emoji",EmojiSymbols,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;
+
+  
 }
 @media only screen and (min-width: 600px) {
   .select span{
