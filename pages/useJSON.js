@@ -1,5 +1,5 @@
 import { useState , useEffect } from 'react'
-import { database } from './firebase';
+import { database } from '../components/firebase';
 
 export default function useJSON(ref) {
     const [value, setvalue] = useState({});

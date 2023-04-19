@@ -3,7 +3,7 @@
 
 
 import React from "react";
-import {signInWithGoogle} from "../pages/firebase";
+import {signInWithGoogle} from "./firebase";
 
 const SignIn = () => {
   return (

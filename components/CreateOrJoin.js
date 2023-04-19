@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 // import './CreateOrJoin.css'
 import useJSON from '../pages/useJSON';
-import { database } from '../pages/firebase';
-import { app } from '../pages/firebase'
+import { database } from './firebase';
+import { app } from './firebase'
 import Link from 'next/link';
 export default function CreateOrJoin({ Setstatus, database, SetRoom, user, setplayerkey }) {
     // console.log("database",database);
