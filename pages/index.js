@@ -27,7 +27,7 @@ import { async } from '@firebase/util';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import {storage} from './firebase';
 import { ref } from 'firebase/database'
-import firebase from "firebase/app"
+import firebase from "firebase/compat/app"
 import back1 from '../public/backg.jpg'
 
 
